@@ -10,15 +10,13 @@ interface TaskProps {
 
 const TodoList = ({task, deleteTask}: TaskProps) => {
   return (
-    <div className="todo-item">
+    <div className="list-item">
       <div>
-        {task.taskName} - {task.deadline}
+        {task.taskName}
       </div>
-      <div>
-        <button
-          onClick={() => deleteTask(task.taskName)}
-        >X</button>
-      </div>
+      <button className="btn btn-link" onClick={() => deleteTask(task.taskName)}>
+        &times;
+      </button>
     </div>
   )
 }
