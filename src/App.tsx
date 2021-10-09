@@ -43,28 +43,34 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <div className="Container">
+      <div className="container">
         <div className="header">
-          <input
-            type="text"
-            placeholder="Task..."
-            name="task"
-            value={task}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            placeholder="Priority"
-            name="priority"
-            value={deadline}
-            onChange={handleChange}
-          />
-          <button
-            type="submit"
-            onClick={saveTask}
-          >Save Task</button>
+
+          <div className="header-title">
+            <h1>Página Inicial</h1>
+          </div>
+
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="New task..."
+              name="task"
+              className="form-control"
+              value={task}
+              onChange={handleChange}
+            />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={saveTask}
+            >Save Task</button>
+          </div>
+
         </div>
-        <div className="task">
+        <div className="list">
+
+          <h2 className="list-title">Tasks</h2>
+
           {todo.map((task: ITask, key: number) => {
             return (
               <TodoList
