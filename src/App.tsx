@@ -1,34 +1,39 @@
-import React, { ChangeEvent, FC, useState } from 'react';
-import './App.css';
-import Compose from './Components/Compose';
-import List from './Components/List';
+import React, { ChangeEvent, FC, useState } from 'react'
+import './App.css'
+import Compose from './Components/Compose'
+import List from './Components/List'
 
-interface ITask {
+interface ITodo {
+  id: number,
   taskName: string
 }
 
 const App: FC = () => {
 
   const [task, setTask] = useState<string>('')
-  const [todo, setTodo] = useState<ITask[]>([])
+  const [todo, setTodo] = useState<ITodo[]>([])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.name === 'task') {
-      setTask(event.target.value)
-    }
+    setTask(event.target.value)
   }
 
   const saveTask = (): void => {
+
+    if (task.length < 1) {
+      return
+    }
+
     const newTask = {
+      id: Math.ceil(Math.random() * 1000),
       taskName: task
     }
     setTodo([...todo, newTask])
     setTask('')
   }
 
-  const deleteTask = (name: string): void => {
+  const deleteTask = (id: number): void => {
     const newTodo = todo.filter(task => {
-      return task.taskName !== name
+      return task.id !== id
     })
 
     setTodo(newTodo)
@@ -52,7 +57,7 @@ const App: FC = () => {
         </div>
         <div className="list">
 
-          {todo.map((task: ITask, key: number) => {
+          {todo.map((task: ITodo, key: number) => {
             return (
               <List
                 task={task}
@@ -67,4 +72,4 @@ const App: FC = () => {
   );
 }
 
-export default App;
+export default App

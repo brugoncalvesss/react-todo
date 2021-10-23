@@ -2,10 +2,10 @@ import React from 'react'
 
 interface TaskProps {
   task: {
-    taskName: string,
-    deadline?: number
+    id: number,
+    taskName: string
   },
-  deleteTask(name: string): void
+  deleteTask(id: number): void
 }
 
 const List = ({task, deleteTask}: TaskProps) => {
@@ -14,7 +14,7 @@ const List = ({task, deleteTask}: TaskProps) => {
       <div>
         {task.taskName}
       </div>
-      <button className="btn btn-link" onClick={() => deleteTask(task.taskName)}>
+      <button className="btn btn-link" onClick={() => deleteTask(task.id)}>
         &times;
       </button>
     </div>
