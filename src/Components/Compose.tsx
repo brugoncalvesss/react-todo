@@ -18,6 +18,7 @@ const Compose = ({task, onChange, onSave}: ComposeProps) => {
           className="form-control"
           value={task}
           onChange={onChange}
+          autoComplete="off"
         />
 
         <button
