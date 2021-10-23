@@ -3,12 +3,12 @@ import React from 'react'
 interface TaskProps {
   task: {
     taskName: string,
-    deadline: number
+    deadline?: number
   },
   deleteTask(name: string): void
 }
 
-const TodoList = ({task, deleteTask}: TaskProps) => {
+const List = ({task, deleteTask}: TaskProps) => {
   return (
     <div className="list-item">
       <div>
@@ -21,4 +21,4 @@ const TodoList = ({task, deleteTask}: TaskProps) => {
   )
 }
 
-export default TodoList
+export default List
